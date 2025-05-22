@@ -1,0 +1,58 @@
+npm init --y => crear package.json
+
+Express
+    npm i express
+    npm i -D nodemon
+    npm i -D ts-node
+    npm i -D typescript
+
+src/ index.ts - server.ts
+
+tsconfig.json 
+    {
+        "compilerOptions": {
+            "outDir": "./dist",
+            "rootDir": "./src",
+            "lib": ["esnext"],
+            "target": "ESNext",
+            "moduleResolution": "NodeNext",
+            "module": "NodeNext",
+            "strict": false,
+            "sourceMap": true,
+            "esModuleInterop": true,
+            "declaration": true
+        },
+        "include": ["src/**/*.ts"]
+    }
+
+
+agregar al package.json
+    "dev": "nodemon --exec ts-node src/index.ts"
+
+Colors
+    npm i colors
+
+Mongoose
+    npm i mongoose
+    Tipos de datos Mongoose 
+        https://mongoosejs.com/docs/schematypes.html
+
+Dotenv
+    npm i dotenv
+
+crear .env
+
+express-validator
+npm i express-validator
+
+crear en config/cors.ts
+cors
+    npm i cors
+    npm i -D @types/cors
+
+agregar en .env FRONTEND_URL=http://localhost:5173
+
+
+morgan
+    npm i morgan
+    npm i -D @types/morgan
