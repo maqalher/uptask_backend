@@ -4,7 +4,12 @@ import Project from "../models/Project";
 export class ProjectController {
 
     static createProject = async (req: Request, res: Response) => {
+        // console.log(req.user); // esxiste por el middleware de auth
         const project = new Project(req.body)
+
+        // Asigna un manager
+        project.manager = req.user.id
+
         try {
             await project.save()
             // await Project.create(req.body)
@@ -17,7 +22,12 @@ export class ProjectController {
 
     static getAllProjects = async (req: Request, res: Response) => {
         try {
-            const projects = await Project.find({})
+            const projects = await Project.find({
+                $or: [
+                    {manager: {$in: req.user.id}},
+                    {team: {$in: req.user.id}}
+                ]
+            })
             res.json(projects)
         } catch (error) {
             console.log(error);
@@ -31,6 +41,13 @@ export class ProjectController {
 
             if(!project) {
                 const error = new Error('Proyecto no encontrado')
+                res.status(404).json({error: error.message})
+                return
+            }
+
+            // valida que sea manager del proyecto y formes parte del equipo
+            if(project.manager.toString() !== req.user.id.toString() && !project.team.includes(req.user.id)) {
+                const error = new Error('Accion no valida')
                 res.status(404).json({error: error.message})
                 return
             }
@@ -51,6 +68,12 @@ export class ProjectController {
                 res.status(404).json({error: error.message})
                 return
             }
+            // valida que sea manager del proyecto
+            if(project.manager.toString() !== req.user.id.toString()) {
+                const error = new Error('Solo el Manager puede actualziar un Proyecto')
+                res.status(404).json({error: error.message})
+                return
+            }
             project.clientName = req.body.clientName
             project.projectName = req.body.projectName
             project.description = req.body.description
@@ -68,6 +91,13 @@ export class ProjectController {
 
             if(!project) {
                 const error = new Error('Proyecto no encontrado')
+                res.status(404).json({error: error.message})
+                return
+            }
+
+            // valida que sea manager del proyecto
+            if(project.manager.toString() !== req.user.id.toString()) {
+                const error = new Error('Solo el manager puede eliminar un Proyecto')
                 res.status(404).json({error: error.message})
                 return
             }

@@ -1,12 +1,15 @@
 import mongoose, { Document, PopulatedDoc, Schema, Types } from "mongoose";
 import { ITask } from "./Task";
+import { IUser } from "./User";
 
 // export type ProjectType = Document & {
 export interface IProject extends Document {
     projectName: string
     clientName: string
     description: string
-    tasks: PopulatedDoc<ITask & Document>[] // Relacion con Task (sub documentos)
+    tasks: PopulatedDoc<ITask & Document>[] // Relacion con Task (sub documentos) varias tareas
+    manager: PopulatedDoc<IUser & Document>
+    team: PopulatedDoc<IUser & Document>[]
 }
 
 const ProjectSchema: Schema = new Schema({
@@ -30,7 +33,17 @@ const ProjectSchema: Schema = new Schema({
             type: Types.ObjectId,
             ref: 'Task'
         }
-    ]
+    ],
+    manager: {
+        type: Types.ObjectId,
+        ref: 'User'
+    },
+    team: [
+        {
+            type: Types.ObjectId,
+            ref: 'User'
+        }
+    ],
 }, {timestamps: true}) // Registra cuando se creo y actualizo
 
 // const Project = mongoose.model<ProjectType>('Project', ProjectSchema)

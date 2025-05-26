@@ -56,3 +56,50 @@ agregar en .env FRONTEND_URL=http://localhost:5173
 morgan
     npm i morgan
     npm i -D @types/morgan
+
+crear models/User.ts
+
+Para agregar postman a cors
+    "dev:api": "nodemon --exec ts-node src/index.ts --api"
+    en cors.ts
+        if(process.argv[2] === '--api'){ 
+            whitelist.push(undefined)
+        }
+
+        
+bcrypt
+npm i bcrypt
+npm i -D @types/bcrypt
+
+
+Modelo Token
+
+https://mailtrap.io/   email de pruebas
+https://resend.com/    email de produccion
+
+crear config/nodemail.ts
+npm i nodemailer
+npm i -D @types/nodemailer
+
+crear emails/AuthEmail.ts
+
+jsonwebtoken   consultar token https://jwt.io/
+npm i jsonwebtoken
+npm i -D @types/jsonwebtoken
+    utils/jwt.ts
+
+
+middleware/auth.ts para proteger rutas
+
+agregar manager: al modelo de Project
+agregar team: al modelo de Project
+
+crar modelo Note.ts
+
+
+alan
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMWVjZTNhOGU2ZWI0Y2RlNmI0OCIsImlhdCI6MTc0ODAzNjAwNywiZXhwIjoxNzYzNTg4MDA3fQ.yXBTMUIQG93I4NyJp9c2XDmlWa3gWNg7H_idz2G9USQ
+
+nala
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMzU1OWUyNGE3MGNlYWM0NWFlYiIsImlhdCI6MTc0ODAzNzEyNiwiZXhwIjoxNzYzNTg5MTI2fQ.fLdRSl6mpb35Dg9jV45ybshLF5dkZPRJ4YO4V24L8lQ

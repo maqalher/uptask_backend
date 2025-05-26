@@ -36,3 +36,13 @@ export function taskBelongsToProject(req: Request, res: Response, next: NextFunc
     }
     next()
 }
+
+// no tiene permisos de editar ni eliminar tarea
+export function hasAuthorization(req: Request, res: Response, next: NextFunction){
+    if(req.user.id.toString() !== req.project.manager.toString()) {
+        const error = new Error('Accion no valida')
+        res.status(400).json({error: error.message})
+        return
+    }
+    next()
+}
