@@ -94,12 +94,16 @@ middleware/auth.ts para proteger rutas
 agregar manager: al modelo de Project
 agregar team: al modelo de Project
 
-crar modelo Note.ts
+crear modelo Note.ts
+
+agregar en package.json
+"build": "tsc" para generar el proyecto
+ "start": "node ./dist/index.js"   => para servir el proyecto
 
 
 alan
 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMWVjZTNhOGU2ZWI0Y2RlNmI0OCIsImlhdCI6MTc0ODAzNjAwNywiZXhwIjoxNzYzNTg4MDA3fQ.yXBTMUIQG93I4NyJp9c2XDmlWa3gWNg7H_idz2G9USQ
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMWVjZTNhOGU2ZWI0Y2RlNmI0OCIsImlhdCI6MTc0ODAzNjAwNywiZXhwIjoxNzYzNTg4MDA3fQ.yXBTMUIQG93I4NyJp9c2XDmlWa3gWNg7H_idz2G9USQ*-*-
 
 nala
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMzU1OWUyNGE3MGNlYWM0NWFlYiIsImlhdCI6MTc0ODAzNzEyNiwiZXhwIjoxNzYzNTg5MTI2fQ.fLdRSl6mpb35Dg9jV45ybshLF5dkZPRJ4YO4V24L8lQ
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzAxMzU1OWUyNGE3MGNlYWM0NWFlYiIsImlhdCI6MTc0ODAzNzEyNiwiZXhwIjoxNzYzNTg5MTI2fQ.fLdRSl6mpb35Dg9jV45ybshLF5dkZPRJ4YO4V24L8lQ*-*-
